@@ -1,5 +1,5 @@
-import { FlatList, ScrollView, View } from "react-native";
-import { Divider, Text, Card } from "react-native-paper";
+import { FlatList, View } from "react-native";
+import { Divider, Text } from "react-native-paper";
 import { SettingsContext, WorkoutContext } from "../components/Contexts";
 import { useContext } from "react";
 import { Style } from "../styles/Style";
