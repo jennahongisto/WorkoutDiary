@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Navigation from './components/Navigation';
+import { SettingsContext, WorkoutContext } from './components/Contexts'
+import { useState } from 'react';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import  Style, { MyTheme } from './styles/Style';
 
 export default function App() {
+
+  const [workouts, setWorkouts] = useState([])
+  const [lengthUnit, setLengthUnit] = useState('km')
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SettingsContext.Provider value={{lengthUnit, setLengthUnit}}>
+     <WorkoutContext.Provider value={{workouts, setWorkouts}}>
+        <PaperProvider theme={MyTheme}>
+          <SafeAreaProvider>
+            <Navigation/>
+          </SafeAreaProvider>
+        </PaperProvider>
+      </WorkoutContext.Provider>
+    </SettingsContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
