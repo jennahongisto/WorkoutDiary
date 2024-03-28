@@ -15,6 +15,11 @@ export default function App() {
      <WorkoutContext.Provider value={{workouts, setWorkouts}}>
         <PaperProvider theme={MyTheme}>
           <SafeAreaProvider>
+          <NavigationContainer>
+            <Drawer.Navigator>
+            <Drawer.Screen name="Home" component={HamburgerMenu} />
+            </Drawer.Navigator>
+            </NavigationContainer>
             <Navigation/>
           </SafeAreaProvider>
         </PaperProvider>
